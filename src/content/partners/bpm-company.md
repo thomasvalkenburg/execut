@@ -2,7 +2,6 @@
 name: BPM Company
 industry: IT Services and IT Consulting
 logo: ~/assets/partners/bpm-company.svg
-tier: platinum
 contact:
   website: https://www.bpmcompany.eu/en/career/
   socials:

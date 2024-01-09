@@ -4,8 +4,6 @@ import { getEntries, getEntry } from 'astro:content'
 
 import Section from '~/components/Section.astro'
 
-import { tiers } from '~/content/config'
-
 import Layout from '~/layouts/section.astro'
 
 import { latest as entry } from '~/utils'
@@ -16,8 +14,6 @@ const { date, partners, venue } = data
 
 const name = await getEntry(venue)
   .then(({ data }) => data.name)
-
-const entries = await getEntries(partners)
 ---
 
 <Layout edition={id} title="Our Partners" {date} venue={name}>
@@ -31,18 +27,17 @@ const entries = await getEntries(partners)
       with a stand, so make sure to stop by and have a chat!
     </p>
 
-    {tiers.map((tier) => (
-      <div class="mt-6 sm:mt-10">
-        <h2 class="font-mono text-2xl font-bold capitalize text-red">
-          {`${tier} ${tier.length > 0 ? 'Partners' : 'Partners'}`}
-        </h2>
+    {Object.entries(partners).map(async ([tier, partners]) => {
+      const entries = await getEntries(partners)
 
-        <article class="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2 lg:grid-cols-3">
-          {entries
-            .filter((partner) => partner.data.tier === tier)
-            .map((partner) => {
-              const { slug, data } = partner
+      return (
+        <div class="mt-6 sm:mt-10">
+          <h2 class="font-mono text-2xl font-bold capitalize text-red">
+            {`${tier} ${partners.length > 1 ? 'Partners' : 'Partner'}`}
+          </h2>
 
+          <article class="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2 lg:grid-cols-3">
+            {entries.map(({ slug, data }) => {
               const { name, industry, logo } = data
 
               return (
@@ -54,10 +49,11 @@ const entries = await getEntries(partners)
                 </a>
               )
             })}
-        </article>
-      </div>
+          </article>
+        </div>
 
-      <hr class="w-full mt-4 text-subtle-highlight sm:mt-8" />
-    ))}
+        <hr class="w-full mt-4 text-subtle-highlight sm:mt-8" />
+      )
+    })}
   </Section>
 </Layout>

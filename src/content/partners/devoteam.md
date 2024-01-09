@@ -2,7 +2,6 @@
 name: Devoteam
 industry: Information Technology & Services
 logo: ~/assets/partners/devoteam.png
-tier: silver
 contact:
   website: https://www.devoteam.com/join-us/
   socials:

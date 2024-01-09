@@ -10,6 +10,13 @@ export const roles = [
   'board',
 ] as const
 
+export const tiers = [
+  'platinum',
+  'gold',
+  'silver',
+  'bronze',
+] as const
+
 const editions = defineCollection({
   type: 'data',
   schema: z.object({
@@ -38,7 +45,7 @@ const editions = defineCollection({
     ]).array(),
     speakers: z.array(reference('speakers')),
     talks: z.array(reference('talks')),
-    partners: z.array(reference('partners')),
+    partners: z.record(z.enum(tiers), reference('partners').array()),
     workshops: z.array(reference('workshops')),
     venue: reference('venues'),
     committee: z.object({
@@ -48,13 +55,6 @@ const editions = defineCollection({
     }).array(),
   }),
 })
-
-export const tiers = [
-  'platinum',
-  'gold',
-  'silver',
-  'bronze',
-] as const
 
 export const socials = [
   'facebook',
@@ -73,7 +73,6 @@ const partners = defineCollection({
       name: z.string(),
       industry: z.string(),
       logo: image(),
-      tier: z.enum(tiers),
       contact: z.object({
         website: z.string().url().optional(),
         mail: z.string().email().optional(),

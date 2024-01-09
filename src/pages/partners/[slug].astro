@@ -13,7 +13,9 @@ export const getStaticPaths = async () => {
 
   const { partners } = data
 
-  const enties = await getEntries(partners)
+  const enties = await getEntries(Object.entries(partners)
+    .map(([_, partners]) => partners)
+    .flat())
 
   return enties.map((entry) => {
     const { slug } = entry

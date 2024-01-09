@@ -75,17 +75,21 @@ talks:
   - tamara-mchedlidze
   - tim-van-der-wiel
 partners:
-  - asml
-  - bol-com
-  - bpm-company
-  - cgi
-  - chipsoft
-  - devoteam
-  - dsw
-  - levarne
-  - linkit
-  - sticky
-  - thales
+  platinum:
+    - bpm-company
+  gold:
+    - chipsoft
+    - levarne
+    - sticky
+  silver:
+    - bol-com
+    - cgi
+    - devoteam
+    - dsw
+    - linkit
+    - thales
+  bronze:
+    - asml
 workshops:
   - bpm-company
   - levarne

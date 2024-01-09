@@ -2,7 +2,6 @@
 name: ChipSoft
 industry: Hospitals and Health Care
 logo: ~/assets/partners/chipsoft.svg
-tier: gold
 contact:
   website: http://www.chipsoft.nl/werken-bij/welkom
   socials:

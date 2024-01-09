@@ -2,7 +2,6 @@
 name: DSW
 industry: Insurance
 logo: ~/assets/partners/dsw.png
-tier: silver
 contact:
   website: https://www.dsw.nl/ICTbijDSW
   socials:

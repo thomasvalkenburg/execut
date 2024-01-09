@@ -2,7 +2,6 @@
 name: CGI
 industry: IT Services and IT Consulting
 logo: ~/assets/partners/cgi.svg
-tier: silver
 contact:
   website: https://www.cgi.com/nl/nl/verdient-jouw-it-carriere-een-kickstart
   socials:
