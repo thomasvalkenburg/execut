@@ -3,17 +3,7 @@ import { Icon } from 'astro-icon/components'
 
 import Container from '~/components/Container.astro'
 
-function *intersperse<T>(xs: T[], delim: T) {
-  let first = true
-
-  for (const x of xs) {
-    if (!first) yield delim
-
-    first = false
-
-    yield x
-  }
-}
+import { intersperse } from '~/utils'
 
 const year = new Date().getFullYear()
 
