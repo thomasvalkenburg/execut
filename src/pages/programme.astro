@@ -7,32 +7,16 @@ import Layout from '~/layouts/section.astro'
 import Program from '~/components/Programme.astro'
 import Section from '~/components/Section.astro'
 
-const entry = await getEntry('editions', '2023')
+import { latest as entry } from '~/utils'
 
 const { id, data } = entry
 
-const { date, programme } = data
-
-const talks = programme
-  .map((slot) =>
-    slot.type === 'talk'
-      ? slot.activities.filter(({ type }) => type === 'talk').length
-      : 0,
-  )
-  .reduce((acc, a) => acc + a, 0)
-
-const workshops = programme
-  .map((slot) =>
-    slot.type === 'talk'
-      ? slot.activities.filter(({ type }) => type === 'workshop').length
-      : 0,
-  )
-  .reduce((acc, a) => acc + a, 0)
+const { date, programme, speakers, talks, workshops } = data
 
 const name = await getEntry('venues', 'de-kom')
   .then(({ data }) => data.name)
 
-const speakers = await getCollection('speakers')
+const entries = await getCollection('speakers')
 ---
 
 <Layout edition={id} title="Programme" {date} venue={name}>
@@ -44,13 +28,13 @@ const speakers = await getCollection('speakers')
         day: 'numeric',
         month: 'long',
         year: 'numeric',
-      }).format(date)} the {name} will host {talks} consecutive speakers,
+      }).format(date)} the {name} will host {talks.length} consecutive speakers,
       each of whom will give a talk on a particular aspect of software and technology.
     </p>
 
     <p class="mt-4 sm:mt-8">
-      Asside from these talks we will also host {workshops} workshops throughout
-      the day! You can sign up for these workshops using our
+      Asside from these talks we will also host {workshops.length} workshops
+      throughout the day! You can sign up for these workshops using our
       <a class="underline transition-colors text-green hover:text-green/80" href={`https://pretix.svsticky.nl/execut/${id}/`}>ticket store</a>.
     </p>
 
@@ -72,7 +56,7 @@ const speakers = await getCollection('speakers')
     </p>
 
     <div class="grid grid-cols-2 gap-2 mt-8 sm:mt-12 sm:grid-cols-3 md:grid-cols-4">
-      {speakers.map(({ slug, data }) => {
+      {entries.map(({ slug, data }) => {
         const { name, description, portrait, host } = data
 
         return (

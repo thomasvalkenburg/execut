@@ -5,13 +5,13 @@ import Layout from '~/layouts/section.astro'
 
 import Section from '~/components/Section.astro'
 
-const entry = await getEntry('editions', '2023')
+import { latest as entry } from '~/utils'
 
 const { id, data } = entry
 
-const { date, committee } = data
+const { date, committee, venue } = data
 
-const { name } = await getEntry('venues', 'de-kom')
+const { name } = await getEntry(venue)
   .then(({ data }) => data)
 ---
 

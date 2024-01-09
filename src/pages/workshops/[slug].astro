@@ -1,10 +1,16 @@
 ---
-import { getCollection } from 'astro:content'
+import { getEntries } from 'astro:content'
 
 import Layout from '~/layouts/detail.astro'
 
+import { latest } from '~/utils'
+
 export const getStaticPaths = async () => {
-  const enties = await getCollection('workshops')
+  const { data } = latest
+
+  const { workshops } = data
+
+  const enties = await getEntries(workshops)
 
   return enties.map((entry) => {
     const { slug } = entry

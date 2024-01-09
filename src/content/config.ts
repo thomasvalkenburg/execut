@@ -36,6 +36,11 @@ const editions = defineCollection({
         ]).array(),
       }),
     ]).array(),
+    speakers: z.array(reference('speakers')),
+    talks: z.array(reference('talks')),
+    partners: z.array(reference('partners')),
+    workshops: z.array(reference('workshops')),
+    venue: reference('venues'),
     committee: z.object({
       name: z.string(),
       role: z.enum(roles),

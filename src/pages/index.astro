@@ -7,38 +7,22 @@ import Button from '~/components/Button.astro'
 import Header from '~/components/Header.astro'
 import Section from '~/components/Section.astro'
 
-const entry = await getEntry('editions', '2023')
+import { latest as entry } from '~/utils'
 
 const { id, data } = entry
 
-const { date, programme } = data
+const { date, talks, workshops, venue } = data
 
-const { name, location } = await getEntry('venues', 'de-kom')
+const { name, location } = await getEntry(venue)
   .then(({ data }) => data)
-
-const talks = programme
-  .map((slot) =>
-    slot.type === 'talk'
-      ? slot.activities.filter(({ type }) => type === 'talk').length
-      : 0,
-  )
-  .reduce((acc, a) => acc + a, 0)
-
-const workshops = programme
-  .map((slot) =>
-    slot.type === 'talk'
-      ? slot.activities.filter(({ type }) => type === 'workshop').length
-      : 0,
-  )
-  .reduce((acc, a) => acc + a, 0)
 
 const summary = {
   speakers: {
-    figure: talks,
+    figure: talks.length,
     href: '/programme',
   },
   workshops: {
-    figure: workshops,
+    figure: workshops.length,
     href: '/programme',
   },
   venue: {

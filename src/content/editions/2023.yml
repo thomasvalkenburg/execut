@@ -57,6 +57,40 @@ programme:
   - time: 17:10
     type: common
     title: Closing & Drinks
+speakers:
+  - burcu-karagol-ayan
+  - koen-de-geringel
+  - pablo-cesar
+  - tamara-mchedlidze
+  - juney-dijkstra
+  - mat-suarez
+  - rik-arends
+  - tim-van-der-wiel
+talks:
+  - burcu-karagol-ayan
+  - koen-de-geringel
+  - mat-suarez
+  - pablo-cesar
+  - rik-arends
+  - tamara-mchedlidze
+  - tim-van-der-wiel
+partners:
+  - asml
+  - bol-com
+  - bpm-company
+  - cgi
+  - chipsoft
+  - devoteam
+  - dsw
+  - levarne
+  - linkit
+  - sticky
+  - thales
+workshops:
+  - bpm-company
+  - levarne
+  - linkit
+venue: de-kom
 committee:
   - name: Jorden Bakker
     role: chair

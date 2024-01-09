@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-import { getCollection, getEntry } from 'astro:content'
+import { getEntries, getEntry } from 'astro:content'
 
 import Section from '~/components/Section.astro'
 
@@ -8,16 +8,16 @@ import { tiers } from '~/content/config'
 
 import Layout from '~/layouts/section.astro'
 
-const entry = await getEntry('editions', '2023')
+import { latest as entry } from '~/utils'
 
 const { id, data } = entry
 
-const { date } = data
+const { date, partners, venue } = data
 
-const name = await getEntry('venues', 'de-kom')
+const name = await getEntry(venue)
   .then(({ data }) => data.name)
 
-const partners = await getCollection('partners')
+const entries = await getEntries(partners)
 ---
 
 <Layout edition={id} title="Our Partners" {date} venue={name}>
@@ -38,7 +38,7 @@ const partners = await getCollection('partners')
         </h2>
 
         <article class="grid grid-cols-1 gap-4 mt-2 md:grid-cols-2 lg:grid-cols-3">
-          {partners
+          {entries
             .filter((partner) => partner.data.tier === tier)
             .map((partner) => {
               const { slug, data } = partner
