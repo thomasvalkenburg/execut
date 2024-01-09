@@ -1,0 +1,55 @@
+---
+import { getEntry } from 'astro:content'
+
+import Layout from '~/layouts/section.astro'
+
+import Section from '~/components/Section.astro'
+
+const entry = await getEntry('editions', '2023')
+
+const { id, data } = entry
+
+const { date } = data
+
+const { name, location, address, embed, render } = await getEntry('venues', 'de-kom')
+  .then(({ data, render }) => ({ render, ...data }))
+
+const { Content } = await render()
+---
+
+<Layout edition={id} title="Venue" {date} venue={name}>
+  <Section>
+    <div class="flex flex-col md:flex-row">
+      <div class="mb-4 shrink basis-1/2">
+        <h1 class="font-mono text-3xl font-bold text-red sm:text-4xl">Venue</h1>
+
+        <p class="mt-4 sm:mt-6">
+          This year exec(ut) will be held at {name} in {location} and is easily accessible
+          by public transport from Utrecht Science Park and Utrecht Centraal.
+        </p>
+
+        <h2 class="mt-8 font-mono text-2xl font-bold sm:mt-12 text-red">
+          About {name}
+        </h2>
+
+        <p class="mt-4 sm:mt-6">
+          <Content />
+        </p>
+      </div>
+
+      <div class="shrink basis-1/2 md:mx-10">
+        <iframe
+          src={embed}
+          class="w-full h-64 my-4 border-none"
+          loading="lazy"
+          title="Direction to Stadion Galgenwaard" />
+
+        <address class="leading-tight prose text-right text-mono text-brown/40">
+          {address.split('\n').map((line) => (
+            <span>{line}<br /></span>
+          ))}
+        </address>
+      </div>
+    </div>
+  </Section>
+</Layout>

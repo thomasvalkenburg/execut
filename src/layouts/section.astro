@@ -1,0 +1,26 @@
+---
+import Layout from '~/layouts/base.astro'
+
+import Footer from '~/components/Footer.astro'
+import Menu from '~/components/Menu.astro'
+import Nav from '~/components/Navigation.astro'
+
+interface Props {
+  edition: string
+  title?: string
+  date: Date
+  venue: string
+}
+
+const { edition, title, date, venue } = Astro.props
+---
+
+<Layout {edition} {title}>
+  <Nav {edition} {date} {venue} />
+
+  <Menu />
+
+  <slot />
+
+  <Footer />
+</Layout>

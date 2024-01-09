@@ -1,0 +1,86 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+import '@fontsource/lora'
+import '@fontsource/ubuntu'
+import '@fontsource/ubuntu-mono'
+
+import '~/styles/global.css'
+
+interface Props extends HTMLAttributes<'body'> {
+  edition?: string
+  title?: string
+}
+
+const {
+  edition,
+  title = 'A conference for and by IT students',
+
+  // This will capture all other attributes
+  ...attributes
+} = Astro.props
+
+const keywords = [
+  'exec(ut)',
+  'execut',
+  'execute',
+  'conference',
+  'congress',
+  'symposium',
+  'Utrecht',
+  'stichting',
+  'studie',
+  'studievereniging',
+  'Sticky',
+  'IT',
+  'tech',
+  'technology',
+  'software',
+  'student',
+  'students',
+  'computer',
+  'information',
+  'science',
+  'sciences',
+  'university',
+]
+---
+
+<!DOCTYPE HTML>
+
+<html lang="en-GB" class="font-serif antialiased text-brown">
+
+<head>
+  <meta charset="utf-8" />
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+  <meta name="theme-color" content="#ef4955" />
+  <meta name="color-scheme" content="only light" />
+
+  <meta name="author" content="Stichting Sticky" />
+  <meta name="keywords" content={keywords.join()} />
+  <meta name="description" content="exec(ut) is a conference for and by IT students" />
+
+  <meta name="generator" content={Astro.generator} />
+
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+  <title>{edition ? `${title} | exec(ut) ${edition}` : `${title} | exec(ut)`}</title>
+</head>
+
+<body class:list={[
+  'flex',
+  'flex-col',
+  'min-h-screen',
+  'bg-off-white',
+  ...attributes?.class?.split(' ') ?? []
+  ]} {...attributes}>
+  <slot />
+</body>
+
+</html>

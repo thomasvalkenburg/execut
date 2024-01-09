@@ -1,0 +1,23 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types'
+
+type Props<T extends HTMLTag> = Polymorphic<{
+  as: T
+}>
+
+const {
+  as: Tag = 'div',
+
+  // This will capture all other attributes
+  ...attributes
+} = Astro.props
+---
+
+<Tag class:list={[
+  'container',
+  'px-6',
+  'sm:mx-auto',
+  ...attributes.class?.split(' ') ?? []
+]} {...attributes}>
+  <slot />
+</Tag>

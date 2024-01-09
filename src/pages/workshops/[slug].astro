@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content'
+
+import Layout from '~/layouts/detail.astro'
+
+export const getStaticPaths = async () => {
+  const enties = await getCollection('workshops')
+
+  return enties.map((entry) => {
+    const { slug } = entry
+
+    return {
+      params: { slug },
+      props: { entry },
+    }
+  })
+}
+
+const { entry } = Astro.props
+
+const { data, render } = entry
+
+const { title } = data
+
+const { Content } = await render()
+---
+
+<Layout {title}>
+  <a class="font-mono underline transition-colors text-green hover:text-green/80" href="/programme" slot="previous">
+    View complete programme
+  </a>
+
+  <h1 class="mt-8 font-mono text-3xl font-bold sm:mt-6 text-red sm:text-4xl">
+    {title}
+  </h1>
+
+  <div class="mt-4 prose text-justify max-w-none sm:mt-6">
+    <Content />
+  </div>
+</Layout>

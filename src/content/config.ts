@@ -1,0 +1,128 @@
+import { defineCollection, reference, z } from 'astro:content'
+
+export const roles = [
+  'chair',
+  'treasurer',
+  'acquisition',
+  'speakers',
+  'location',
+  'promotion',
+  'board',
+] as const
+
+const editions = defineCollection({
+  type: 'data',
+  schema: z.object({
+    name: z.string(),
+    date: z.date(),
+    programme: z.discriminatedUnion('type', [
+      z.object({
+        time: z.string(),
+        type: z.literal('common'),
+        title: z.string(),
+      }),
+      z.object({
+        time: z.string(),
+        type: z.literal('talk'),
+        activities: z.discriminatedUnion('type', [
+          z.object({
+            type: z.literal('talk'),
+            activity: reference('talks'),
+          }),
+          z.object({
+            type: z.literal('workshop'),
+            activity: reference('workshops'),
+          }),
+        ]).array(),
+      }),
+    ]).array(),
+    committee: z.object({
+      name: z.string(),
+      role: z.enum(roles),
+      href: z.string().url().optional(),
+    }).array(),
+  }),
+})
+
+export const tiers = [
+  'platinum',
+  'gold',
+  'silver',
+  'bronze',
+] as const
+
+export const socials = [
+  'facebook',
+  'github',
+  'glassdoor',
+  'instagram',
+  'linkedin',
+  'twitter',
+  'youtube',
+] as const
+
+const partners = defineCollection({
+  type: 'content',
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      industry: z.string(),
+      logo: image(),
+      tier: z.enum(tiers),
+      contact: z.object({
+        website: z.string().url().optional(),
+        mail: z.string().email().optional(),
+        socials: z.record(z.enum(socials), z.string().url()).array(),
+      }),
+    }),
+})
+
+const speakers = defineCollection({
+  type: 'content',
+  schema: ({ image }) =>
+    z.object({
+      name: z.string(),
+      description: z.string(),
+      portrait: image(),
+      // Transform `boolean | undefined` to `boolean`
+      host: z
+        .boolean()
+        .optional()
+        .transform((val) => !!val),
+    }),
+})
+
+const talks = defineCollection({
+  type: 'content',
+  schema: z.object({
+    speaker: reference('speakers'),
+    title: z.string(),
+  }),
+})
+
+const venues = defineCollection({
+  type: 'content',
+  schema: z.object({
+    name: z.string(),
+    location: z.string(),
+    address: z.string(),
+    embed: z.string().url(),
+  }),
+})
+
+const workshops = defineCollection({
+  type: 'content',
+  schema: z.object({
+    organizer: reference('partners'),
+    title: z.string(),
+  }),
+})
+
+export const collections = {
+  editions,
+  partners,
+  speakers,
+  talks,
+  venues,
+  workshops,
+}
