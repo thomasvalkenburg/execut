@@ -23,26 +23,33 @@ const entries = await getCollection('speakers')
   <Section>
     <h1 class="font-mono text-3xl font-bold text-red sm:text-4xl">Programme</h1>
 
-    <p class="mt-4 sm:mt-8">
-      On {new Intl.DateTimeFormat('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-      }).format(date)} the {name} will host {talks.length} consecutive speakers,
-      each of whom will give a talk on a particular aspect of software and technology.
-    </p>
+    {programme ? (
+      <p class="mt-4 sm:mt-8">
+        On {new Intl.DateTimeFormat('en-GB', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        }).format(date)} the {name} will host {talks.length} consecutive speakers,
+        each of whom will give a talk on a particular aspect of software and technology.
+      </p>
 
-    <p class="mt-4 sm:mt-8">
-      Asside from these talks we will also host {workshops.length} workshops
-      throughout the day! You can sign up for these workshops using our
-      <a class="underline transition-colors text-green hover:text-green/80" href={`https://pretix.svsticky.nl/execut/${id}/`}>ticket store</a>.
-    </p>
+      <p class="mt-4 sm:mt-8">
+        Asside from these talks we will also host {workshops.length} workshops
+        throughout the day! You can sign up for these workshops using our
+        <a class="underline transition-colors text-green hover:text-green/80" href={`https://pretix.svsticky.nl/execut/${id}/`}>ticket store</a>.
+      </p>
 
-    <Program {programme} />
+      <Program {programme} />
 
-    <p class="mt-4 sm:mt-8">
-      Short breaks (5 minutes) are provided between talks.
-    </p>
+      <p class="mt-4 sm:mt-8">
+        Short breaks (5 minutes) are provided between talks.
+      </p>
+    ) : (
+      <p class="mt-4 sm:mt-8">
+        The programme for this edition has not yet been announced. Please check
+        back later!
+      </p>
+    )}
   </Section>
 
   <Section id="speakers">
