@@ -11,29 +11,17 @@ import { latest as entry } from '~/utils'
 
 const { id, data } = entry
 
-const { date, talks, workshops, venue } = data
+const { date, venue } = data
 
 const { name, location } = await getEntry(venue)
   .then(({ data }) => data)
 
-const summary = {
-  speakers: {
-    figure: talks.length,
-    href: '/programme',
-  },
-  workshops: {
-    figure: workshops.length,
-    href: '/programme',
-  },
-  venue: {
-    figure: name,
-    href: '/venue',
-  },
-  location: {
-    figure: location,
-    href: '/venue',
-  },
-}
+const summary = [
+  ['speakers', 7],
+  ['workshops', 3],
+  ['venue', name],
+  ['location', location],
+]
 ---
 
 <Layout edition={id} {date} venue={name}>
@@ -55,12 +43,12 @@ const summary = {
   </Header>
 
   <Section>
-    <figure class="grid grid-cols-2 grid-rows-2 my-4 gap-x-2 gap-y-4 sm:gap-6 sm:my-8">
-      {Object.entries(summary).map(([title, { figure, href }]) => (
-        <a class="sm:text-center" {href}>
+    <figure class="grid grid-cols-2 grid-rows-2 my-4 gap-x-2 gap-y-4 sm:my-8 sm:gap-6">
+      {summary.map(([title, figure]) => (
+        <span class="sm:text-center">
           <small class="font-mono text-sm leading-none text-light-red">{title}</small>
           <p class="mt-2 text-xl font-bold text-brown">{figure}</p>
-        </a>
+        </span>
       ))}
     </figure>
   </Section>
