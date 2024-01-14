@@ -9,9 +9,9 @@ import { latest as entry } from '~/utils'
 
 const { id, data } = entry
 
-const { date } = data
+const { date, venue } = data
 
-const { name, location, address, embed, render } = await getEntry('venues', 'de-kom')
+const { name, location, address, embed, render } = await getEntry(venue)
   .then(({ data, render }) => ({ render, ...data }))
 
 const { Content } = await render()
