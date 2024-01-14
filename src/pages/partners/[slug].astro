@@ -1,21 +1,13 @@
 ---
-import { getEntries } from 'astro:content'
+import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
 
 import { Icon } from 'astro-icon/components'
 
 import Layout from '~/layouts/detail.astro'
 
-import { latest } from '~/utils'
-
 export const getStaticPaths = async () => {
-  const { data } = latest
-
-  const { partners } = data
-
-  const enties = await getEntries(Object.entries(partners)
-    .map(([_, partners]) => partners)
-    .flat())
+  const enties = await getCollection('partners')
 
   return enties.map((entry) => {
     const { slug } = entry

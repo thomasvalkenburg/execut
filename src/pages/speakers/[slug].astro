@@ -1,17 +1,11 @@
 ---
-import { getCollection, getEntries } from 'astro:content'
+import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
 
 import Layout from '~/layouts/detail.astro'
 
-import { latest } from '~/utils'
-
 export const getStaticPaths = async () => {
-  const { data } = latest
-
-  const { speakers } = data
-
-  const enties = await getEntries(speakers)
+  const enties = await getCollection('speakers')
 
   return enties.map((entry) => {
     const { slug } = entry
@@ -29,7 +23,7 @@ const { slug, data, render } = entry
 
 const { name, description, portrait } = data
 
-// There is always 1 associated talk
+// There is at most one associated talk
 const [talk] = await getCollection('talks', ({ data }) => data.speaker.slug === slug)
 
 const { Content } = await render()
