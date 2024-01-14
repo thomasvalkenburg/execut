@@ -1,5 +1,5 @@
 ---
-import { getEntry } from 'astro:content'
+import { getCollection, getEntry } from 'astro:content'
 
 import Layout from '~/layouts/section.astro'
 
@@ -7,7 +7,8 @@ import Button from '~/components/Button.astro'
 import Header from '~/components/Header.astro'
 import Section from '~/components/Section.astro'
 
-import { latest as entry } from '~/utils'
+const [entry] = await getCollection('editions')
+  .then((entries) => entries.slice(-1))
 
 const { id, data } = entry
 

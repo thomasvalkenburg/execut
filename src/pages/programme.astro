@@ -1,16 +1,18 @@
 ---
 import { Image } from 'astro:assets'
-import { getEntries, getEntry } from 'astro:content'
+import { getCollection, getEntries, getEntry } from 'astro:content'
 
 import Layout from '~/layouts/section.astro'
 
 import Program from '~/components/Programme.astro'
 import Section from '~/components/Section.astro'
 
-import { latest as entry } from '~/utils'
 import type { Code } from 'astro:components'
 
-const { id, data } = entry
+const [entry] = await getCollection('editions')
+  .then((entries) => entries.slice(-1))
+
+  const { id, data } = entry
 
 const { date, programme, host, speakers, talks, workshops, venue } = data
 

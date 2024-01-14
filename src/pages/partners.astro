@@ -1,12 +1,13 @@
 ---
 import { Image } from 'astro:assets'
-import { getEntries, getEntry } from 'astro:content'
+import { getCollection, getEntries, getEntry } from 'astro:content'
 
 import Section from '~/components/Section.astro'
 
 import Layout from '~/layouts/section.astro'
 
-import { latest as entry } from '~/utils'
+const [entry] = await getCollection('editions')
+  .then((entries) => entries.slice(-1))
 
 const { id, data } = entry
 
