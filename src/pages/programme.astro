@@ -8,15 +8,18 @@ import Program from '~/components/Programme.astro'
 import Section from '~/components/Section.astro'
 
 import { latest as entry } from '~/utils'
+import type { Code } from 'astro:components'
 
 const { id, data } = entry
 
-const { date, programme, speakers, talks, workshops, venue } = data
+const { date, programme, host, speakers, talks, workshops, venue } = data
 
 const name = await getEntry(venue)
   .then(({ data }) => data.name)
 
-const entries = speakers && await getEntries(speakers)
+const entries = speakers ? await getEntries(speakers) : []
+
+if (host) entries.push(await getEntry(host))
 ---
 
 <Layout edition={id} title="Programme" {date} venue={name}>

@@ -57,12 +57,12 @@ programme:
   - time: 17:10
     type: common
     title: Closing & Drinks
+host: juney-dijkstra
 speakers:
   - burcu-karagol-ayan
   - koen-de-geringel
   - pablo-cesar
   - tamara-mchedlidze
-  - juney-dijkstra
   - mat-suarez
   - rik-arends
   - tim-van-der-wiel
