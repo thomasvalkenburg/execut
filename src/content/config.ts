@@ -107,10 +107,12 @@ const talks = defineCollection({
 
 const venues = defineCollection({
   type: 'content',
-  schema: z.object({
+  schema: ({ image }) => z.object({
     name: z.string(),
     location: z.string(),
+    image: image(),
     address: z.string(),
+    directions: z.string().url(),
     embed: z.string().url(),
   }),
 })
