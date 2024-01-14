@@ -27,7 +27,7 @@ const name = await getEntry(venue)
       with a stand, so make sure to stop by and have a chat!
     </p>
 
-    {Object.entries(partners).map(async ([tier, partners]) => {
+    {partners && Object.entries(partners).map(async ([tier, partners]) => {
       const entries = await getEntries(partners)
 
       return (

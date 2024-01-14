@@ -14,7 +14,7 @@ const { programme } = Astro.props
     <p>starts @</p>
   </li>
 
-  {programme.map(async (slot) => {
+  {programme && programme.map(async (slot) => {
     const { type, time } = slot
 
     switch (type) {

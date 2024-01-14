@@ -22,7 +22,7 @@ const editions = defineCollection({
   schema: z.object({
     name: z.string(),
     date: z.date(),
-    programme: z.array(z.discriminatedUnion('type', [
+    programme: z.discriminatedUnion('type', [
       z.object({
         time: z.string(),
         type: z.literal('common'),
@@ -42,11 +42,11 @@ const editions = defineCollection({
           }),
         ]).array(),
       }),
-    ])).optional(),
-    speakers: z.array(reference('speakers')),
-    talks: z.array(reference('talks')),
-    partners: z.record(z.enum(tiers), reference('partners').array()),
-    workshops: z.array(reference('workshops')),
+    ]).array().optional(),
+    speakers: reference('speakers').array().optional(),
+    talks: reference('talks').array().optional(),
+    partners: z.record(z.enum(tiers), reference('partners').array()).optional(),
+    workshops: reference('workshops').array().optional(),
     venue: reference('venues'),
     committee: z.object({
       name: z.string(),
