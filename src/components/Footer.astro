@@ -3,21 +3,23 @@ import { Icon } from 'astro-icon/components'
 
 import Container from '~/components/Container.astro'
 
-import { intersperse } from '~/utils'
-
 const year = new Date().getFullYear()
 
-const socials = {
-  instagram: 'https://www.instagram.com/execut_conference/',
-  linkedin: 'https://www.linkedin.com/showcase/execut-conference/',
-  youtube: 'https://www.youtube.com/@execut-conference',
+function intersperse<T>(xs: T[], delim: T): T[] {
+  return xs.flatMap((x, i) => i === 0 ? [x] : [delim, x])
 }
+
+const socials = [
+  ['instagram', 'https://www.instagram.com/execut_conference/'],
+  ['linkedin', 'https://www.linkedin.com/showcase/execut-conference/'],
+  ['youtube', 'https://www.youtube.com/@execut-conference'],
+]
 ---
 
 <footer class="flex-1 py-6 mt-12 bg-subtle-highlight sm:pt-8 md:pt-10">
   <Container>
     <div class="flex justify-center gap-2">
-      {[...intersperse(Object.entries(socials).map(([name, href]) => (
+      {[...intersperse(socials.map(([name, href]) => (
         <a class="transition hover:bg-brown/40 hover:shadow focus:ring focus:ring-brown/40 focus:outline-none" {href}>
           <Icon name={`mdi:${name}`} class="w-10 h-10 p-2 fill-brown" />
         </a>
