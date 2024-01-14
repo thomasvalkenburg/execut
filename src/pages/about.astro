@@ -36,7 +36,7 @@ const { name } = await getEntry(venue)
       {committee.map(({ name, role, href }) => (
         <li class="grid grid-cols-2">
           <a class="underline transition-colors text-green hover:text-green/80" {href}>{name}</a>
-          <p>{role}</p>
+          <p class="capitalize">{role}</p>
         </li>
       ))}
     </ul>
