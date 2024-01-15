@@ -1,0 +1,40 @@
+name: exec(ut) 2024
+date: 2024-03-27
+partners:
+  gold:
+    - bpm-company
+    # - levarne 🤞
+    - sticky
+  silver:
+    - booking-com
+    - chipsoft
+    - devoteam
+    - dsw
+    - linkit
+    - thales
+    # - yer
+  bronze:
+    - asml
+venue: galgenwaard
+committee:
+  - name: Julian Verouden
+    role: chair
+    href: https://www.linkedin.com/in/julian-verouden-5798791bb/
+  - name: Thomas Valkenburg
+    role: treasurer
+    href: https://www.linkedin.com/in/thomas-valkenburg-333066114/
+  - name: Stijn Lievaart
+    role: acquisition
+    href: https://www.linkedin.com/in/stijn-lievaart/
+  - name: Eva Huigen
+    role: speakers
+    href: https://www.linkedin.com/in/eva-huigen-a2377a248/
+  - name: Jandre Kostic
+    role: location
+    href: https://www.linkedin.com/in/jandre-kostic/
+  - name: Finola Parkinso
+    role: promotion
+    href: https://www.linkedin.com/in/finola-parkinson-44506923a/
+  - name: Lisanne Koetsier
+    role: board
+    href: https://www.linkedin.com/in/lisanne-koetsier/
