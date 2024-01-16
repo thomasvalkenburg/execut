@@ -7,10 +7,11 @@ contact:
   socials:
     - instagram: https://www.instagram.com/linkit/
     - linkedin: https://www.linkedin.com/company/linkit/
+    - facebook: https://www.facebook.com/linkitgroup
 ---
 
-LINKIT is an informal organization in which we are motivated and eager to evolve, excel and inspire in our area of expertise. We do so in an accessible atmosphere with ‘VRIMIBO’s’ and many team & well-being events through which we connect with each other; including our yearly Ski-trip and this year’s epic weekend in Slovenia to celebrate our 25th year anniversary! We take pride in our drive, knowledge driven and ambitious atmosphere and our diversity in culture. We have 20 different nationalities working with us and are very proud of that.
+As a trusted IT partner and consultancy, we make impact with digital innovation powered by the best knowledge in our focus areas: Low-code, Cloud, Data & AI, Quality Assurance, UX/UI Design, Full-Stack Development and Functional Consultancy. Companies wanting to stay ahead by using digitalization are fueled by our consultants’ knowledge and skills. Starting at the strategy, we dream, design, develop and drive at every level of IT.
 
-LINKIT is a solution provider and an IT Sourcing specialist and, thanks to almost 25 years of experience, a knowledge-driven strategic IT partner. Our IT-Squads in the fields of AI & Data Engineering, Cloud & IoT, Full stack Web development, UX/UI, Low-code and Quality Assurance build in-house solutions and provide consultants and teams for top 500 companies such as KLM, ING, ASML and governments.
+LINKIT is helping companies like Aegon, KLM and ASML win by enabling business through innovation. Thanks to 25 years of experience, we are a knowledge-driven strategic IT partner, and we do so in an informal work environment including many team & well-being events through which we connect with each other! We embrace diversity; we have more than 20 different nationalities working with us and are very proud of that.
 
-We are looking forward to meeting all students and graduates, who are eager to go beyond the classroom! To work together, inspire each other and commit to a better tomorrow. Meet us at our stand or join the workshop on “ Design Thinking” to find out how you could evolve and excel in your career with us.
+We are looking forward to meeting all students and graduates, who are eager to go beyond the classroom! To work together, inspire each other and commit to a better tomorrow. Meet us at our stand to find out how you could evolve and excel in your career with us!
