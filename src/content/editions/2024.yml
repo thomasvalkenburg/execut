@@ -29,7 +29,7 @@ programme:
       - type: talk
         activity: maria-torres-vega
       - type: workshop
-        activity: bpm-company
+        activity: devoteam
     time: 14:00
     type: common
     title: Coffee
@@ -47,7 +47,7 @@ programme:
       - type: talk
         activity: ahmed-salama
       - type: workshop
-        activity: levarne
+        activity: booking-com
   - time: 15:55
     type: common
     title: Coffee
@@ -57,7 +57,7 @@ programme:
       - type: talk
         activity: huub-janssen
       - type: workshop
-        activity: linkit
+        activity: chipsoft
   - time: 16:50
     type: common
     title: Closing & Drinks
