@@ -28,8 +28,8 @@ programme:
     activities:
       - type: talk
         activity: maria-torres-vega
-      - #type: workshop
-        #activity: bpm-company
+      - type: workshop
+        activity: bpm-company
     time: 14:00
     type: common
     title: Coffee
@@ -46,8 +46,8 @@ programme:
     activities:
       - type: talk
         activity: ahmed-salama
-      - #type: workshop
-        #activity: levarne
+      - type: workshop
+        activity: levarne
   - time: 15:55
     type: common
     title: Coffee
@@ -56,8 +56,8 @@ programme:
     activities:
       - type: talk
         activity: huub-janssen
-      - #type: workshop
-        #activity: linkit
+      - type: workshop
+        activity: linkit
   - time: 16:50
     type: common
     title: Closing & Drinks
@@ -89,7 +89,7 @@ partners:
     - dsw
     - linkit
     - thales
-    # - yer
+    - yer
   bronze:
     - asml
 venue: galgenwaard
